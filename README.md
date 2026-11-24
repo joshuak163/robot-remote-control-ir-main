@@ -56,13 +56,16 @@ The first problem was that driveDistance() and rotateCCW() used blocking loops. 
 
 The second issue that occurred was wavelength. When using the remote, it would only work when the total distance away from the reciever was ~1 meter away. Further research shows why this occured. The IR receiver is simply getting "blinded" by the overly bright infrared light when the remote is closer than 1 meter, which blurs the signal pulses together so your Arduino cannot decode them. There is also the aspect of electrical noise that interfere with the commanded signal.
 
+_Figure 3: IR Remote to Arduino flow chart._
+
+<img width="640" height="172" alt="image" src="https://github.com/user-attachments/assets/9ce88113-2fb4-496d-8508-c4c99d4e0054" />
+
+
 ## Final solution
 
 The final approach separates the IR commands from the movement functions. Each button is mapped to a specific movement: forward, backward, left, or right. The movement functions use encoder feedback to control distance and rotation. The emergency stop is checked while the robot is moving, allowing the code to immediately halt both motors when button 5 is pressed.
 
 With our current robot, it completes the path as expected. Instead of the previous 10cm, it was opted for 200cm in order to better test and verify the solution regarding the emergency stop. This however did not change the solution and how it performed, and still it stopped immediately, with only a centimeter traveling after the command was recieved.
-
-_Figure 4: IR Remote to Arduino flow chart._
 
 
 ## Conclusion
@@ -70,3 +73,8 @@ _Figure 4: IR Remote to Arduino flow chart._
 Overall, the project is a success. The emergency stop works immediately once the signal is recieved, and stops the robot before it can go any further. The IR reciver paired with the Arduino Mega and two PWM motors allow the robot to move wherever needed remotely.
 
 If I were to redo this project I would most definetely allow to combine signals together in order to have a consistent driving path. For example, I would hold on to the forward button and turn by pressing the left or right as needed. That way I do not need to stop before every instruction, but guide it in real time.
+
+_Figure 4: How the internal components receive and transmit IR Receivers._
+
+<img width="554" height="554" alt="image" src="https://github.com/user-attachments/assets/0c9fc9ff-9b04-4355-b285-076573b4373c" />
+
