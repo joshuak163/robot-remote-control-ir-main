@@ -15,7 +15,7 @@ void setup() {
   motorHalt(LMOTOR);
   motorHalt(RMOTOR);
 
-  IrReceiver.begin(2, ENABLE_LED_FEEDBACK);
+  IrReceiver.begin(2, ENABLE_LED_FEEDBACK); // Pin 2 is especially important since we are using timer 1 on the arduino mega.
   resetPID();
   Serial.println("STARTING");
 }
@@ -31,7 +31,7 @@ void loop() {
 
       // EMERGENCY STOP: Button 5
       if (command == 0x1C) {
-        emergencyStop = true; // By setting this to true, the motor drive function loops
+        emergencyStop = true; // By setting this to true, the function that is in progress gets a false, which stops it.
         motorHalt(LMOTOR);
         motorHalt(RMOTOR);
         Serial.println("EMERGENCY STOP!");
@@ -41,7 +41,7 @@ void loop() {
       }
 
       // MOVEMENT COMMANDS
-      else if (emergencyStop == false) {
+      else if (emergencyStop == false) { // If no emergency stop, then proceed as normal.
 
         // FORWARD: Button 2
         if (command == 0x18) {
