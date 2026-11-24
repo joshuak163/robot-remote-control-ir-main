@@ -3,6 +3,8 @@
   *
   *  @author Matthew Ford
   *  @version 2024.1
+  * 
+  * Modified for use by Joshua Klymenko
   */
 
 #ifndef MOTOR_H
