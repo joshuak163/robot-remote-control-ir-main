@@ -1,8 +1,8 @@
 # Robot remote control with IR
 
-Assignment for TME 441 Mechatronics (extra labor) — remote control for the W robot with an IR remote.
+Assignment for TME 441 Mechatronics (extra labor) remote control for the "W robot" developed by JJP Robotics (Team3AA) with an IR remote.
 
-By Joshua Klymenko — solo project.
+By Joshua Klymenko.
 
 ## Introduction
 
