@@ -11,7 +11,6 @@ This project is to allow the remote control of a robot with the implementation o
 By the end of this project I was able to successfully command the robot its 4 driving functions and implement the emergency stop. This project will cover how an IR receiver can be configured to work with a PWM motor, and problems that occurred due to a timing issue in the Arduino Mega. 
 
 _Figure 1: IR Receiver and IR Remote._
-
 <img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/8e236795-3cee-4078-b050-9fa5e9462437" />
 
 ## Specifications
@@ -55,22 +54,19 @@ To see if the project is a success it will, in order:
 
 The first problem was that driveDistance() and rotateCCW() used blocking loops. While either function was running, the main loop could not process new IR commands. As a result, the emergency stop could not interrupt the robot during movement. The second problem was a timer conflict between IRremote and the motor control system. Both libraries relied on AVR timers, so using the same timer interfered with the motor PWM signals. This caused the motors to behave incorrectly and prevented reliable movement control.
 
-_Paragraph 2: describe the other problems — anything else that went wrong during wiring, testing, or the demo, and what each one taught you._
-
-![Figure 3: The test setup where the problem showed up](images/figure-3-test-setup.png)
-_Figure 3: The test setup where the problem showed up._
+The second issue that occurred was wavelength. When using the remote, it would only work when the total distance away from the reciever was ~1 meter away. Further research shows why this occured. The IR receiver is simply getting "blinded" by the overly bright infrared light when the remote is closer than 1 meter, which blurs the signal pulses together so your Arduino cannot decode them. There is also the aspect of electrical noise that interfere with the commanded signal.
 
 ## Final solution
 
 The final approach separates the IR commands from the movement functions. Each button is mapped to a specific movement: forward, backward, left, or right. The movement functions use encoder feedback to control distance and rotation. The emergency stop is checked while the robot is moving, allowing the code to immediately halt both motors when button 5 is pressed.
 
-_Paragraph 2: describe the result — what the robot does now, how it behaved in the demo, and how the final solution compares to the original plan._
+With our current robot, it completes the path as expected. Instead of the previous 10cm, it was opted for 200cm in order to better test and verify the solution regarding the emergency stop. This however did not change the solution and how it performed, and still it stopped immediately, with only a centimeter traveling after the command was recieved.
 
-![Figure 4: The finished robot with the IR remote](images/figure-4-finished-robot.png)
-_Figure 4: The finished robot with the IR remote._
+_Figure 4: IR Remote to Arduino flow chart._
+
 
 ## Conclusion
 
-_Paragraph 1: sum up what was built and what worked — the remote control, the movements, and the emergency stop._
+Overall, the project is a success. The emergency stop works immediately once the signal is recieved, and stops the robot before it can go any further. The IR reciver paired with the Arduino Mega and two PWM motors allow the robot to move wherever needed remotely.
 
-_Paragraph 2: reflect on what you learned and what you would do differently next time._
+If I were to redo this project I would most definetely allow to combine signals together in order to have a consistent driving path. For example, I would hold on to the forward button and turn by pressing the left or right as needed. That way I do not need to stop before every instruction, but guide it in real time.
