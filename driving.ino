@@ -78,6 +78,8 @@ void driveDistance(int length) {
   Serial.println(target);
 
   while (emergencyStop == false) {
+    // The while statement makes sure to check if the emergency stop is triggered. It is more for redunenacy if anything.
+    // The below if statement takes the bulk of the work. It is what actually triggers the stop.
 
     // Check for emergency stop
     if (checkEmergencyStop()) {
@@ -119,7 +121,9 @@ void rotateCCW(int angle) {
   const unsigned long TIMEOUT = 5000;
 
   while (emergencyStop == false) {
-
+// The while statement makes sure to check if the emergency stop is triggered. It is more for redunenacy if anything.
+    // The below if statement takes the bulk of the work. It is what actually triggers the stop.
+    
     // Check for emergency stop
     if (checkEmergencyStop()) {
       break;
