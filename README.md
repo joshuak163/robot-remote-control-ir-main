@@ -11,7 +11,8 @@ This project is to allow the remote control of a robot with the implementation o
 By the end of this project I was able to successfully command the robot its 4 driving functions and implement the emergency stop. This project will cover how an IR receiver can be configured to work with a PWM motor, and problems that occurred due to a timing issue in the Arduino Mega. 
 
 _Figure 1: IR Receiver and IR Remote._
-<img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/8e236795-3cee-4078-b050-9fa5e9462437" />
+
+<img width="512" height="512" alt="image" src="imgs/715035918-8e236795-3cee-4078-b050-9fa5e9462437.png" />
 
 ## Specifications
 
@@ -35,7 +36,7 @@ Table 1: Parts Summary for this project
 
 _Figure 2: Wiring diagram of the motor encoder._
 
-<img width="720" height="400" alt="image" src="https://github.com/user-attachments/assets/c5cd8f2b-bac3-4258-8798-d073a318c53d" />
+<img width="720" height="400" alt="image" src="imgs/715034264-c5cd8f2b-bac3-4258-8798-d073a318c53d.png" />
 
 
 ## Plan
@@ -58,7 +59,7 @@ The second issue that occurred was wavelength. When using the remote, it would o
 
 _Figure 3: IR Remote to Arduino flow chart._
 
-<img width="640" height="172" alt="image" src="https://github.com/user-attachments/assets/9ce88113-2fb4-496d-8508-c4c99d4e0054" />
+<img width="640" height="172" alt="image" src="imgs/716776336-9ce88113-2fb4-496d-8508-c4c99d4e0054.png" />
 
 
 ## Final solution
@@ -76,5 +77,5 @@ If I were to redo this project I would most definetely allow to combine signals 
 
 _Figure 4: How the internal components receive and transmit IR Receivers._
 
-<img width="554" height="554" alt="image" src="https://github.com/user-attachments/assets/0c9fc9ff-9b04-4355-b285-076573b4373c" />
+<img width="554" height="554" alt="image" src="imgs/716777317-0c9fc9ff-9b04-4355-b285-076573b4373c.png" />
 
